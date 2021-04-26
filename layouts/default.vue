@@ -6,6 +6,7 @@
       clipped
       app
       fixed
+      height="100%"
     >
       <v-list>
         <v-list-item
@@ -16,7 +17,7 @@
           exact
         >
           <v-list-item-action>
-            <v-icon color="blue-grey darken-1">{{ item.icon }}</v-icon>
+            <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title v-text="item.title" />
@@ -36,9 +37,10 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <v-container>
+      <v-container style="margin-bottom: 100px">
         <nuxt />
       </v-container>
+      <FlashMessage style="position: fixed; z-index: 10;"></FlashMessage>
     </v-main>
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
       <v-list>
@@ -58,7 +60,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer :absolute="!fixed" class="mt-10" app padless elevation="5">
+    <v-footer app padless inset :absolute="!fixed" outlined>
       <v-card width="100%" class="text-center" flat tile>
         <v-divider></v-divider>
         <v-card-text>
@@ -66,6 +68,9 @@
         </v-card-text>
       </v-card>
     </v-footer>
+    <v-btn v-scroll="onScroll" v-show="fab" fab fixed bottom right color="primary" @click="toTop">
+      <v-icon>mdi-chevron-up</v-icon>
+    </v-btn>
   </v-app>
 </template>
 
@@ -88,7 +93,7 @@ export default {
         },
         {
           icon: "mdi-fast-forward",
-          title: "Phân đoạn hình ảnh",
+          title: "Phân đoạn ảnh Polyb",
           to: "/predict",
         },
       ],
@@ -97,7 +102,18 @@ export default {
       rightDrawer: false,
       title: "Phân đoạn Polyp",
       iconsFooter: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+      fab: false
     };
   },
+  methods: {
+    onScroll(e) {
+      if (typeof window === 'undefined') return
+      const top = window.pageYOffset || e.target.scrollTop || 0
+      this.fab = top > 20
+    },
+    toTop() {
+      this.$vuetify.goTo(0)
+    }
+  }
 };
 </script>

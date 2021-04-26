@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.1",
+    "@smartweb/vue-flash-message": "^0.6.10",
     "core-js": "^3.9.1",
     "eslint": "^7.22.0",
     "eslint-plugin-vue": "^7.8.0",

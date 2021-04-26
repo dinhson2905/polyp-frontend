@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <v-row class="mt-10">
+  <div class="mt-10">
+    <v-row>
       <v-col cols="3">
         <v-img src="/medical-overview.png" height="200" width="200"></v-img>
       </v-col>
@@ -97,9 +97,9 @@
               hơn.
             </li>
             <li>
-              <b>Cơ chế Attention:</b> Attention block có thể thay đổi đầu vào một cách
-              chọn lọc hoặc gán các trọng số khác nhau cho các biến đầu vào theo
-              mức độ quan trọng khác nhau.
+              <b>Cơ chế Attention:</b> Attention block có thể thay đổi đầu vào
+              một cách chọn lọc hoặc gán các trọng số khác nhau cho các biến đầu
+              vào theo mức độ quan trọng khác nhau.
             </li>
             <li>...</li>
           </ul>
@@ -134,18 +134,20 @@
           <v-card width="300" rounded="xl" height="500">
             <v-card-title>
               {{ dataset.title }}
+              <v-spacer></v-spacer>
+              <a :href="dataset.link" target="_bank" style="text-decoration: none;">
+                <v-btn icon>
+                  <v-icon>mdi-arrow-right-bold</v-icon>
+                </v-btn>
+              </a>
             </v-card-title>
             <v-img :src="dataset.image" height="200" width="300"></v-img>
             <v-divider class="mx-4"></v-divider>
             <v-card-text>{{ dataset.description }}</v-card-text>
-            <v-card-actions>
-              <v-btn color="blue-grey lighten-1" text> Xem thêm </v-btn>
-            </v-card-actions>
           </v-card>
         </v-col>
       </v-row>
     </div>
-    <v-sheet height="100"></v-sheet>
   </div>
 </template>
 
@@ -159,32 +161,29 @@ export default {
         image: "/Kvasir.png",
         description:
           "Kvasir-SEG gồm 1000 hình ảnh polyp đường tiêu hóa và mặt nạ phân đoạn tương ứng, được chú thích và xác thực bởi bác sĩ chuyên khoa tiêu hóa có kinh nghiệm.",
+        link: "https://datasets.simula.no/kvasir-seg/",
       },
       {
         title: "CVC-ClinicDB",
         image: "/CVC-ClinicDB.png",
         description:
           "CVC-ClinicDB gồm 612 hình ảnh với độ phân giải 384×288 từ 31 chuỗi nội soi đại tràng, được sử dụng để phân đoạn, phát hiện polyp trong video nội soi đại tràng.",
+        link: "https://polyp.grand-challenge.org/CVCClinicDB/",
       },
       {
         title: "CVC-ConlonDB",
         image: "/CVC-ColonDB.png",
         description:
           "CVC-ColonDB gồm các chuỗi video có chú thích của video nội soi đại tràng. Nó chứa 15 chuỗi nội soi đại tràng ngắn, đến từ 15 nghiên cứu khác nhau. Trong mỗi trình tự, một polyp được hiển thị.",
+        link: "http://vi.cvc.uab.es/colon-qa/cvccolondb/",
       },
       {
         title: "ETIS-Larib",
         image: "/ETIS.png",
         description:
           "ETIS-Larib Polyp DB gồm các khung được trích xuất từ ​​các video nội soi đại tràng, cung cấp ví dụ về polyp và mặt nạ tương ứng.",
+        link: "https://polyp.grand-challenge.org/databases/",
       },
-    ],
-    subtasks: [
-      { title: "", image: "" },
-      { title: "", image: "" },
-      { title: "", image: "" },
-      { title: "", image: "" },
-      { title: "", image: "" },
     ],
   }),
 };
